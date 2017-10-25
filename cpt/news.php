@@ -134,7 +134,9 @@ add_action( 'plt_get_latest_news_homepage', 'plt_get_latest_news_homepage', 10 )
 function plt_get_news_for_sidebar($count) {
 		$the_query = new WP_Query(array(
 			'post_type' => 'news',
-			'posts_per_page' => 5
+			'posts_per_page' => 5,
+			'meta_key' => 'post_views_count',
+			'orderby' => 'meta_value_num'
 		));
 		if ($the_query->have_posts()) {
      while ($the_query->have_posts()) {
@@ -144,4 +146,23 @@ function plt_get_news_for_sidebar($count) {
 	 }
 }
 
-add_action( 'plt_get_news_for_sidebar', 'plt_get_news_for_sidebar', 10, 2);
+add_action('plt_get_news_for_sidebar', 'plt_get_news_for_sidebar', 10, 2);
+
+function plt_top_new_slider() {
+	$latestNews = [];
+	$the_query = new WP_Query(array(
+		'post_type' => 'news',
+		'posts_per_page' => 3,
+	));
+	if ($the_query->have_posts()) {
+
+	 while ($the_query->have_posts()) {
+			 $the_query->the_post();
+			 $currentNews = ['title' => get_the_title(), 'thumb' => get_the_post_thumbnail(), 'permalink' => get_the_permalink()];
+			 $latestNews[] = $currentNews;
+		}
+	 }
+	 wp_reset_query();
+}
+
+add_action('plt-top-new-slider', 'plt_top_new_slider', 10);

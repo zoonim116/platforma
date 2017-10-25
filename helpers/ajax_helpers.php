@@ -6,7 +6,9 @@ function loadmore_ajax_handler(){
 	$args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
 	$args['post_status'] = 'publish';
   $args['post_type'] = 'documents';
+  $args['posts_per_page'] = 4;
 	// it is always better to use WP_Query but not here
+
 	query_posts( $args );
 	if( have_posts() ) :
 
@@ -30,6 +32,9 @@ function loadmore_sidebar_news () {
   $args['post_status'] = 'publish';
   $args['post_type'] = 'news';
   $args['posts_per_page'] = 5;
+  $args['meta_key'] = 'post_views_count';
+  $args['orderby'] = 'meta_value_num';
+
   // it is always better to use WP_Query but not here
   query_posts( $args );
   if( have_posts() ) :

@@ -2,8 +2,10 @@
 require_once get_template_directory() . '/cpt/homepage-gallery.php';
 require_once get_template_directory() . '/cpt/news.php';
 require_once get_template_directory() . '/cpt/documents.php';
+require_once get_template_directory() . '/cpt/team.php';
 require_once get_template_directory() . '/helpers/widgets.php';
 require_once get_template_directory() . '/helpers/ajax_helpers.php';
+require_once get_template_directory() . '/helpers/views_counter.php';
 
 /************************ Register scripts and styles *****************************/
 function wpdocs_theme_name_scripts() {
@@ -27,7 +29,7 @@ function wpdocs_theme_name_scripts() {
     		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
     		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
     		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
-    		'max_page' => $wp_query->max_num_pages
+    		'max_page' => ceil(wp_count_posts('documents')->publish / 4)
     	));
 
       wp_localize_script( 'loadmore', 'loadmore_sidebar_news_params', array(

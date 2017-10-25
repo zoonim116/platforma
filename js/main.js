@@ -42,9 +42,6 @@ $( document ).ready(function() {
 		        slidesToScroll: 1
 		      }
 		    }
-		    // You can unslick at a given breakpoint now by adding:
-		    // settings: "unslick"
-		    // instead of a settings object
 		  ]
 	});
 
@@ -67,11 +64,53 @@ $( document ).ready(function() {
 		        slidesToScroll: 1
 		      }
 		    }
-		    // You can unslick at a given breakpoint now by adding:
-		    // settings: "unslick"
-		    // instead of a settings object
 		  ]
 	});
+
+	$('.cat-news-real .row').slick({
+	  infinite: true,
+	  slidesToShow: 3,
+	  slidesToScroll: 3,
+	  adaptiveHeight: true,
+	  prevArrow: $('.cat-news-real .slide-control .control-prev'),
+	  nextArrow: $('.cat-news-real .slide-control .control-next'),
+	   responsive: [
+		    {
+		      breakpoint: 992,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		  ]
+	});
+
+	$('.cat-news-social-items').slick({
+	  infinite: true,
+	  slidesToShow: 2,
+	  slidesToScroll: 1,
+  	  variableWidth: true,
+	  prevArrow: $('.cat-news-social .slide-control .control-prev'),
+	  nextArrow: $('.cat-news-social .slide-control .control-next')
+	});
+
+	$('.cat-news-educate-items').slick({
+	  infinite: true,
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  prevArrow: $('.cat-news-educate .slide-control .control-prev'),
+	  nextArrow: $('.cat-news-educate .slide-control .control-next')
+	});
+
+	$('.cat-news-life-items').slick({
+	  infinite: true,
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  prevArrow: $('.cat-news-life .slide-control .control-prev'),
+	  nextArrow: $('.cat-news-life .slide-control .control-next')
+	});
+
+	/*end gallery*/
 
 	carouselNormalization();
 	
