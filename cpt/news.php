@@ -130,3 +130,18 @@ function plt_get_latest_news_homepage() {
 }
 
 add_action( 'plt_get_latest_news_homepage', 'plt_get_latest_news_homepage', 10 );
+
+function plt_get_news_for_sidebar($count) {
+		$the_query = new WP_Query(array(
+			'post_type' => 'news',
+			'posts_per_page' => 5
+		));
+		if ($the_query->have_posts()) {
+     while ($the_query->have_posts()) {
+       $the_query->the_post();
+			 get_template_part('template-parts/sidebar-news-item');
+		 }
+	 }
+}
+
+add_action( 'plt_get_news_for_sidebar', 'plt_get_news_for_sidebar', 10, 2);

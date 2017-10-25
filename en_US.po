@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Platforma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-25 10:52+0000\n"
-"PO-Revision-Date: 2017-10-25 12:01+0000\n"
+"POT-Creation-Date: 2017-10-25 13:12+0000\n"
+"PO-Revision-Date: 2017-10-25 13:12+0000\n"
 "Last-Translator: admin <maximko91@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en-US\n"
@@ -15,9 +15,6 @@ msgstr ""
 
 msgid "Meniul"
 msgstr ""
-
-msgid "Vezi detalii"
-msgstr "See more"
 
 msgid "Contactați-ne"
 msgstr ""
@@ -34,8 +31,11 @@ msgstr ""
 msgid "Pentru noutăți abonați-vă la newsletter"
 msgstr ""
 
-msgid "Documente"
-msgstr "Documents"
+msgid "Mai multe informații"
+msgstr ""
+
+msgid "Arată încă 5"
+msgstr "Show 5 more"
 
 #. Name of the theme
 msgid "Platforma"
@@ -54,3 +54,12 @@ msgstr "The Civil Society Platform of the EU Moldova"
 
 msgid "Actualitate"
 msgstr "Present"
+
+msgid "Documente"
+msgstr "Documents"
+
+msgid "Vezi detalii"
+msgstr "See more"
+
+msgid "Ultimile știri"
+msgstr "Latest news"

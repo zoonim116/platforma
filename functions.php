@@ -30,6 +30,13 @@ function wpdocs_theme_name_scripts() {
     		'max_page' => $wp_query->max_num_pages
     	));
 
+      wp_localize_script( 'loadmore', 'loadmore_sidebar_news_params', array(
+      		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+      		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+      		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+      		'max_page' => $wp_query->max_num_pages
+      	));
+
      	wp_enqueue_script( 'loadmore' );
 }
 add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
