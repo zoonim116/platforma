@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Platforma\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-25 19:26+0000\n"
-"PO-Revision-Date: 2017-10-25 19:26+0000\n"
+"POT-Creation-Date: 2017-10-27 11:50+0000\n"
+"PO-Revision-Date: 2017-10-27 11:51+0000\n"
 "Last-Translator: admin <maximko91@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en-US\n"
@@ -32,10 +32,10 @@ msgid "Pentru noutăți abonați-vă la newsletter"
 msgstr ""
 
 msgid "Mai multe informații"
-msgstr ""
+msgstr "More information"
 
-msgid "Membrii platformei"
-msgstr "Platform members"
+msgid "Relevant"
+msgstr ""
 
 #. Name of the theme
 msgid "Platforma"
@@ -70,5 +70,17 @@ msgstr "Show 5 more"
 msgid "Știri noi"
 msgstr "Top news"
 
+msgid "Știri"
+msgstr "News"
+
 msgid "Acasă"
 msgstr "Home"
+
+msgid "Membrii platformei"
+msgstr "Platform members"
+
+msgid "Următoarele evenimente"
+msgstr "Future events"
+
+msgid "Evenimente trecute"
+msgstr "Past events"

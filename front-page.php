@@ -29,7 +29,7 @@
 			<div class="actualitate-slider">
 				<?php do_action('plt_get_actualitate_news', 10); ?>
 			</div>
-			<a class="btn btn-primary btn-more" href="#" role="button">Mai multe informații</a>
+			<a class="btn btn-primary btn-more" href="<?php echo get_post_type_archive_link('news'); ?>" role="button"><?php echo __('Mai multe informații', 'platforma'); ?></a>
 			</div>
 
 		</div>

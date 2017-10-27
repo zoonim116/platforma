@@ -11,7 +11,7 @@ function create_news_post_type() {
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'news'),
       'query_var' => true,
-      'supports' => array('title', 'editor', 'thumbnail'),
+      'supports' => array('title', 'editor', 'thumbnail', 'comments'),
       'menu_icon' => 'dashicons-schedule',
 		)
 	);
@@ -155,14 +155,163 @@ function plt_top_new_slider() {
 		'posts_per_page' => 3,
 	));
 	if ($the_query->have_posts()) {
-
-	 while ($the_query->have_posts()) {
-			 $the_query->the_post();
-			 $currentNews = ['title' => get_the_title(), 'thumb' => get_the_post_thumbnail(), 'permalink' => get_the_permalink()];
-			 $latestNews[] = $currentNews;
-		}
+		 while ($the_query->have_posts()) {
+				 $the_query->the_post();
+				 $currentNews = ['title' => get_the_title(),
+				 									'thumb' => get_the_post_thumbnail(),
+													'permalink' => get_the_permalink(),
+													'date' => get_the_date('j.n.Y'),
+													'views_count' => getPostViews(get_the_ID()),
+													'comments_count' => get_comments_number(get_the_ID())
+												];
+				 $latestNews[] = $currentNews;
+			}
+		Helper::hm_get_template_part('template-parts/news-top-news', ['latestNews' => $latestNews]);
 	 }
 	 wp_reset_query();
 }
 
 add_action('plt-top-new-slider', 'plt_top_new_slider', 10);
+
+
+function actuality_slider() {
+	$the_query = new WP_Query(array(
+			'post_type' => 'news',
+			// 'posts_per_page' => -1,
+			'tax_query' => array(
+				array (
+						'taxonomy' => 'news_categories',
+						'field' => 'term_taxonomy_id',
+						'terms' => '3',
+				)
+			),
+		));
+		if ($the_query->have_posts()) {
+		 while ($the_query->have_posts()) {
+			 $the_query->the_post();
+			 	get_template_part('template-parts/actuality-item');
+		 }
+	 }
+}
+
+add_action('actuality-slider', 'actuality_slider', 10);
+
+function news_category_title($catID) {
+	$category = get_term_by('id', $catID, 'news_categories');
+	echo $category->name;
+}
+
+add_action('news-category-title', 'news_category_title', 10, 2);
+
+function social_slider() {
+	$the_query = new WP_Query(array(
+			'post_type' => 'news',
+			// 'posts_per_page' => -1,
+			'tax_query' => array(
+				array (
+						'taxonomy' => 'news_categories',
+						'field' => 'term_taxonomy_id',
+						'terms' => '4',
+				)
+			),
+		));
+		if ($the_query->have_posts()) {
+			$i = 1;
+		 while ($the_query->have_posts()) {
+			 $the_query->the_post();
+			 if($i%2) {
+				 $class = '4';
+			 } else {
+				 $class = '8';
+			 }
+			 	Helper::hm_get_template_part('template-parts/social-item', ['class' => $class]);
+				$i++;
+		 }
+	 }
+}
+
+add_action('social-slider', 'social_slider', 10);
+
+function education_slider() {
+	$the_query = new WP_Query(array(
+			'post_type' => 'news',
+			'posts_per_page' => 12,
+			'tax_query' => array(
+				array (
+						'taxonomy' => 'news_categories',
+						'field' => 'term_taxonomy_id',
+						'terms' => '5',
+				)
+			),
+		));
+		if ($the_query->have_posts()) {
+		$i = 0;
+		 while ($the_query->have_posts()) {
+			 $the_query->the_post();
+			 $currentNews = ['title' => get_the_title(),
+ 											 'thumb' => get_the_post_thumbnail(),
+ 											 'permalink' => get_the_permalink(),
+ 										 ];
+			 $slide[] = $currentNews;
+			 if(count($slide) == 3) {
+			 		Helper::hm_get_template_part('template-parts/education-item', ['slide' => $slide]);
+					$slide = [];
+				}
+				$i++;
+		 }
+	 }
+}
+
+add_action('education-slider', 'education_slider', 10);
+
+function lifestyle_slider() {
+	$the_query = new WP_Query(array(
+			'post_type' => 'news',
+			'posts_per_page' => 15,
+			'tax_query' => array(
+				array (
+						'taxonomy' => 'news_categories',
+						'field' => 'term_taxonomy_id',
+						'terms' => '6',
+				)
+			),
+		));
+			if ($the_query->have_posts()) {
+			$i = 0;
+		 while ($the_query->have_posts()) {
+			 $the_query->the_post();
+			 $currentNews = ['title' => get_the_title(),
+			 								  'content' => substr(strip_tags(get_the_content(), '<p>'), 0, 250),
+												'thumb' => get_the_post_thumbnail(),
+												'permalink' => get_the_permalink(),
+												'date' => get_the_date('j.n.Y'),
+												'views_count' => getPostViews(get_the_ID()),
+												'comments_count' => get_comments_number(get_the_ID())
+											];
+			 $slide[] = $currentNews;
+			 if(count($slide) == 5) {
+					Helper::hm_get_template_part('template-parts/lifestyle-item', ['slide' => $slide]);
+					$slide = [];
+				}
+				$i++;
+		 }
+	 }
+}
+
+add_action('lifestyle-slider', 'lifestyle_slider', 10);
+
+function get_relevant_news() {
+	$the_query = new WP_Query(array(
+			'post_type' => 'news',
+			'posts_per_page' => 9,
+			'orderby' => 'rand'
+		));
+		if ($the_query->have_posts()) {
+		 while ($the_query->have_posts()) {
+			 $the_query->the_post();
+				get_template_part('template-parts/relevant-item');
+		 }
+	 }
+}
+
+add_action('get-relevant-news', 'get_relevant_news', 10);

@@ -1,6 +1,8 @@
 <?php
+require_once get_template_directory() . '/helpers/helper.php';
 require_once get_template_directory() . '/cpt/homepage-gallery.php';
 require_once get_template_directory() . '/cpt/news.php';
+require_once get_template_directory() . '/cpt/events.php';
 require_once get_template_directory() . '/cpt/documents.php';
 require_once get_template_directory() . '/cpt/team.php';
 require_once get_template_directory() . '/helpers/widgets.php';
@@ -38,6 +40,20 @@ function wpdocs_theme_name_scripts() {
       		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
       		'max_page' => $wp_query->max_num_pages
       	));
+
+        wp_localize_script( 'loadmore', 'loadmore_past_events', array(
+        		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+        		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+        		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+        		'max_page' => $wp_query->max_num_pages
+        	));
+
+          wp_localize_script( 'loadmore', 'loadmore_future_events', array(
+          		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+          		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+          		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+          		'max_page' => $wp_query->max_num_pages
+          	));
 
      	wp_enqueue_script( 'loadmore' );
 }
@@ -77,4 +93,26 @@ add_action( 'init', 'register_menus' );
 function formatFileSize($fileID) {
   $rawFileSize = filesize(get_attached_file($fileID ));
   return size_format($rawFileSize, 2);
+}
+
+function twentyfifteen_comment_nav() {
+    // Are there comments to navigate through?
+    if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+    ?>
+    <nav class="navigation comment-navigation" role="navigation">
+        <h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'twentyfifteen' ); ?></h2>
+        <div class="nav-links">
+            <?php
+                if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'twentyfifteen' ) ) ) :
+                    printf( '<div class="nav-previous">%s</div>', $prev_link );
+                endif;
+
+                if ( $next_link = get_next_comments_link( __( 'Newer Comments', 'twentyfifteen' ) ) ) :
+                    printf( '<div class="nav-next">%s</div>', $next_link );
+                endif;
+            ?>
+        </div><!-- .nav-links -->
+    </nav><!-- .comment-navigation -->
+    <?php
+    endif;
 }

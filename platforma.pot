@@ -68,8 +68,29 @@ msgstr ""
 msgid "Știri noi"
 msgstr ""
 
+msgid "Știri"
+msgstr ""
+
 msgid "Acasă"
 msgstr ""
 
+msgid "Relevant"
+msgstr ""
+
 msgid "Membrii platformei"
+msgstr ""
+
+msgid "Următoarele evenimente"
+msgstr ""
+
+msgid "Evenimente trecute"
+msgstr ""
+
+msgid "Mai multe informații"
+msgstr ""
+
+msgid "Evenimente"
+msgstr ""
+
+msgid "Evenimente Relevante"
 msgstr ""

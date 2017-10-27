@@ -18,8 +18,6 @@ function create_team_post_type() {
 }
 add_action( 'init', 'create_team_post_type' );
 
-
-
 function plt_get_team_members() {
   $the_query = new WP_Query(array(
       'post_type' => 'team',
