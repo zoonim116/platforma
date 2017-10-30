@@ -66,7 +66,7 @@ function my_theme_setup(){
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'custom-logo' );
-    add_theme_support( 'html5', array( 'gallery', 'caption' ));
+    add_theme_support( 'html5', array( 'gallery', 'caption', 'search-form' ));
 }
 
 if ( ! file_exists( get_template_directory() . '/helpers/wp-bootstrap-navwalker.php' ) ) {

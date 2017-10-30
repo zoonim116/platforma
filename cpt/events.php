@@ -124,7 +124,27 @@ function get_past_events() {
 add_action('get-past-events', 'get_past_events', 10);
 
 function get_random_future_events() {
-
+	$the_query = new WP_Query(array(
+		'post_type' => 'event',
+		'offset' => 1,
+		'posts_per_page' => 9,
+		'orderby' => 'rand',
+		'meta_query' => array(
+			'relation'=> 'AND',
+					array(
+						'key'	 => 'event_date',
+						'value'	  	=> date('Y-m-d H:i:s'),
+						'compare' 	=> '>',
+						'type'			=> 'DATETIME'
+					),
+		)
+	));
+	if ($the_query->have_posts()) {
+	 while ($the_query->have_posts()) {
+		 $the_query->the_post();
+			get_template_part('template-parts/relevant-event-item');
+	 }
+ }
 }
 
 add_action('get-random-future-events', 'get_random_future_events', 10);

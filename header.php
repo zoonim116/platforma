@@ -54,10 +54,8 @@
 		</div>
 		<div class="header__search-form">
 			<div class="container">
-				<form class="form-inline">
-							<input class="form-control" type="search" placeholder="Cautare..." aria-label="Search">
-				      		<button class="btn btn-outline-success" type="submit">Caută</button>
-				</form>
+				<?php get_search_form(); ?>
+				
 			</div>
 		</div>
 	</section>

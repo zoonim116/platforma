@@ -40,7 +40,7 @@
 				<div class="row">
 					<div class="col-lg-9">
 						<div class="article-soc row">
-							<div class="data"><span> <?php echo get_the_date('j M Y H:i'); ?> 20 Nov 2019, 21:18</span></div>
+							<div class="data"><span> <?php echo get_the_date('j M Y H:i'); ?></span></div>
 							<div class="soc-wrap">
 								<?php echo do_shortcode('[ssba-buttons]'); ?>
 							</div>
@@ -68,7 +68,7 @@
 			<div class="container">
 				<div class="col-lg-9">
 					<div class="article-soc row">
-							<div class="data"><span>20 Nov 2019, 21:18</span></div>
+							<div class="data"><span><?php echo get_the_date('j M Y H:i'); ?></span></div>
 							<div class="soc-wrap">
 								<?php echo do_shortcode('[ssba-buttons]'); ?>
 							</div>
@@ -92,103 +92,7 @@
 							</a>
 						 </div>
 						<div class="row">
-							<div class="news-page-item col-lg-4">
-								<div class="news-page-item-bg">
-                  <?php do_shortcode('relevant-events'); ?>
-									<div class="news-page-item-img events-data">
-										<a href="#">
-											<img src="img/event1.jpg" alt="slide">
-											<div class="events-item-date">
-												<p>30</p>
-												<p>dec</p>
-											</div>
-										</a>
-									</div>
-									<div class="news-page-item-content">
-										<div class="news-page-meta">
-											<span class="meta-data">17.06.2019</span>
-											<span class="meta-views">26</span>
-											<span class="meta-comments">0</span>
-										</div>
-										<a href="#">
-											GRAFIC. Balanța comercială a Republicii Moldova se duce vertiginos în jos: Avem un deficit cu 22% mai mare decât în 2016
-										</a>
-										<a href="#"><p class="documents-slider-items-button">Vezi detalii<i class="fa fa-angle-double-right" aria-hidden="true"></i></p></a>
-									</div>
-								</div>
-							</div>
-							<div class="news-page-item col-lg-4">
-								<div class="news-page-item-bg">
-									<div class="news-page-item-img events-data">
-										<a href="#">
-											<img src="img/event1.jpg" alt="slide">
-											<div class="events-item-date">
-												<p>30</p>
-												<p>dec</p>
-											</div>
-										</a>
-									</div>
-									<div class="news-page-item-content">
-										<div class="news-page-meta">
-											<span class="meta-data">17.06.2019</span>
-											<span class="meta-views">26</span>
-											<span class="meta-comments">0</span>
-										</div>
-										<a href="#">
-											GRAFIC. Balanța comercială a Republicii Moldova se duce vertiginos în jos: Avem un deficit cu 22% mai mare decât în 2016
-										</a>
-										<a href="#"><p class="documents-slider-items-button">Vezi detalii<i class="fa fa-angle-double-right" aria-hidden="true"></i></p></a>
-									</div>
-								</div>
-							</div>
-							<div class="news-page-item col-lg-4">
-								<div class="news-page-item-bg">
-									<div class="news-page-item-img events-data">
-										<a href="#">
-											<img src="img/event1.jpg" alt="slide">
-											<div class="events-item-date">
-												<p>30</p>
-												<p>dec</p>
-											</div>
-										</a>
-									</div>
-									<div class="news-page-item-content">
-										<div class="news-page-meta">
-											<span class="meta-data">17.06.2019</span>
-											<span class="meta-views">26</span>
-											<span class="meta-comments">0</span>
-										</div>
-										<a href="#">
-											 în jos: Avem un deficit cu 22% mai mare decât în 2016
-										</a>
-										<a href="#"><p class="documents-slider-items-button">Vezi detalii<i class="fa fa-angle-double-right" aria-hidden="true"></i></p></a>
-									</div>
-								</div>
-							</div>
-							<div class="news-page-item col-lg-4">
-								<div class="news-page-item-bg">
-									<div class="news-page-item-img events-data">
-										<a href="#">
-											<img src="img/event1.jpg" alt="slide">
-											<div class="events-item-date">
-												<p>30</p>
-												<p>dec</p>
-											</div>
-										</a>
-									</div>
-									<div class="news-page-item-content">
-										<div class="news-page-meta">
-											<span class="meta-data">17.06.2019</span>
-											<span class="meta-views">26</span>
-											<span class="meta-comments">0</span>
-										</div>
-										<a href="#">
-											GRAFIC. Balanța comercială a Republicii Moldova se duce vertiginos în jos: Avem un deficit cu 22% mai mare decât în 2016
-										</a>
-										<a href="#"><p class="documents-slider-items-button">Vezi detalii<i class="fa fa-angle-double-right" aria-hidden="true"></i></p></a>
-									</div>
-								</div>
-							</div>
+              <?php do_action('get-random-future-events'); ?>
 						</div>
 						</div>
 					</div>

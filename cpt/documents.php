@@ -50,7 +50,6 @@ function plt_get_documents() {
 	  if ($the_query->have_posts()) {
 			while ($the_query->have_posts()) {
         $the_query->the_post();
-				$upload_file = get_field('upload_file');
 				get_template_part( 'template-parts/document-item-template');
 			 }
 	}
